@@ -7,13 +7,13 @@
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-field">
-            <i class="material-icons prefix">assignment_ind</i>
+            <em class="material-icons prefix">assignment_ind</em>
             <%= f.label :login, 'Nombre de usuario o e-mail' %>
             <%= f.text_field :login, autofocus: true, class: "validate" %>
           </div>
 
           <div class="input-field">
-            <i class="material-icons prefix">lock</i>
+            <em class="material-icons prefix">lock</em>
             <%= f.label :password, 'Contraseña' %>
             <%= f.password_field :password, autocomplete: "current-password", class: "validate" %>
           </div>

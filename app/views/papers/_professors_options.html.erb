@@ -17,7 +17,7 @@
           <td>
             <%= link_to rails_blob_path(paper.pdf_file, disposition: "inline"), 
                 class: "waves-effect btn-floating btn-small grey", target: "_blank" do %>
-                <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver PDF'>visibility</i>
+                <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver PDF'>visibility</em>
             <%end%>
           </td>
           <% if paper.assingment.present? %>
@@ -26,20 +26,20 @@
                   <% if paper.reviews.find_by(paper_id: paper.id) %>
                     <td>
                       <%= link_to event_paper_reviews_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
-                        <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Revisiones'>search</i>
+                        <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Revisiones'>search</em>
                       <% end %>
                     </td>
                   <% end %>
                   <% if paper.reviews.find_by(user_id: current_user.id) %>
                       <td>
                           <%= link_to edit_event_paper_review_path(@event, paper, paper.reviews.find_by(user_id: current_user.id)), class: "waves-effect btn-floating btn-small grey" do %>
-                              <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Revisión'>edit</i>
+                              <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Revisión'>edit</em>
                           <% end %>
                       </td>
                   <% else%>
                       <td>
                           <%= link_to new_event_paper_review_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
-                              <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Realizar Revisión'>add_box</i>
+                              <em class="material-icons tooltipped" data-position='bottom' data-tooltip='Realizar Revisión'>add_box</em>
                           <% end %>
                       </td>
                   <%end%>

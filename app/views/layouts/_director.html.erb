@@ -5,7 +5,7 @@
                   <li>
                       <a href="#!" class="dropdown-trigger" data-target="dropdown2">
                           <%= current_user.name %> <%= current_user.lastname %>
-                          <i class="material-icons right">arrow_drop_down</i>
+                          <em class="material-icons right">arrow_drop_down</em>
                       </a>
                   </li>
               </ul>
@@ -15,7 +15,7 @@
                   <li>
                     <a href="#!" class="dropdown-trigger" data-target="users-drop">
                         Usuarios
-                        <i class="material-icons right">arrow_drop_down</i>
+                        <em class="material-icons right">arrow_drop_down</em>
                     </a>
                   </li>
                   <li><a href="/documents">Documentos</a></li>
@@ -33,7 +33,7 @@
     <li>
       <%= link_to destroy_user_session_path, method: :delete do %>
           Salir
-          <i class="material-icons right">directions_run</i>
+          <em class="material-icons right">directions_run</em>
       <% end %>
     </li>
 </ul>

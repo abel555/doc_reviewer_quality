@@ -2,12 +2,12 @@
     <% if current_user.director? %>
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large blue darken-2">
-                <i class="large material-icons">menu</i>
+                <em class="large material-icons">menu</em>
             </a>
             <ul>
                 <li>
                     <%= link_to event_paper_reviews_path(@event, @paper, :format => :pdf), class: "btn-floating grey", target: "_blank" do %>
-                        <i class="material-icons tooltipped" data-position='left' data-tooltip='Exportar Informe'>file_download</i>
+                        <em class="material-icons tooltipped" data-position='left' data-tooltip='Exportar Informe'>file_download</em>
                     <% end %>
                 </li>
             </ul>
