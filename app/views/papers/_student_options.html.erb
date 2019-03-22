@@ -1,0 +1,42 @@
+<% if Date.today <= @event.limit_date %>
+  <p class="yellow lighten-3 right"><i class="material-icons">announcement</i> Fecha límite para subir documentos: <strong class="red-text"> <%= l(@event.limit_date, format: :long) %></strong></p><br><br><br>
+  <%= link_to new_event_paper_path, class: "btn-small waves-effect right" do %>
+    <i class="material-icons left">add</i>
+    Añadir
+  <% end %><br><br>
+<% end %>
+
+<table>
+  <thead class="header-row">
+    <tr>
+      <th>No.</th>
+      <th>Título</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @papers_by_user.each_with_index do |paper, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td class="title-row"><%= link_to paper.title, event_paper_path(@event, paper), class: 'link-to-text' %></td>
+          <td>
+            <%= link_to rails_blob_path(paper.pdf_file, disposition: "inline"), 
+                class: "waves-effect btn-floating btn-small grey", target: "_blank" do %>
+                <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver PDF'>visibility</i>
+            <%end%>
+          </td>
+          <%if paper.status != 'en proceso'%>
+            <td>
+              <%= link_to event_paper_reviews_path(@event, paper), class: "waves-effect btn-floating btn-small grey" do %>
+                <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Ver Revisiones'>search</i>
+              <% end %>
+            </td>
+          <%end%>
+          <td><%= link_to edit_event_paper_path(@event, paper), class: 'waves-effect btn-floating btn-small grey' do %>
+            <i class="material-icons tooltipped" data-position='bottom' data-tooltip='Editar Documento'>edit</i>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
