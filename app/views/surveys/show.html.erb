@@ -28,7 +28,7 @@
         <% if @survey.safe_to_remove? %> 
             <div class="row">
                 <div class="col s3 push-s9">
-                    <%= link_to raw("<i class='material-icons left'>delete</i>" + 'Eliminar'), event_survey_path(@survey), { method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'red-text'} %>
+                    <%= link_to raw("<em class='material-icons left'>delete</em>" + 'Eliminar'), event_survey_path(@survey), { method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'red-text'} %>
                 </div>
             </div>
         <% end %>

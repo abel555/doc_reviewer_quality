@@ -16,11 +16,11 @@
           <td>
             <%= link_to rails_blob_path(paper.pdf_file, disposition: "inline"), 
                 class: "waves-effect btn-floating btn-small grey", target: "_blank" do %>
-                <i class="material-icons">visibility</i>
+                <em class="material-icons">visibility</em>
             <%end%>
           </td>
           <td><%= link_to edit_event_paper_path(paper.event_id, paper), class: 'waves-effect btn-floating btn-small grey' do %>
-            <i class="material-icons">edit</i>
+            <em class="material-icons">edit</em>
             <% end %>
           </td>
         </tr>
