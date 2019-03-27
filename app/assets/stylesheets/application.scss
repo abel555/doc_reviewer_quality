@@ -158,19 +158,6 @@ tr { border: 0!important; }
 .datepicker-cancel { color:rgb(226, 66, 66) !important; }
 
 .timepicker-display-column .timepicker-span-hours, .timepicker-span-minutes { color: white !important; }
-
-
-trix-editor ul:not(.browser-default)>li {
-  list-style-type: disc;
-  display: list-item;
-}
-
-trix-editor ul:not(.browser-default) {
-  list-style-type: disc;
-  display: block;
-  padding-left: 40px;
-}
-
 .review-show ul:not(.browser-default) { padding-left: 30px; }
 .review-show ul:not(.browser-default) li { list-style-type: initial; }
 .comment-show ul:not(.browser-default) { padding-left: 30px; }
