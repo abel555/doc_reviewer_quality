@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_action :authorize_admin, only: [:create, :update]
+  $path_to_change_pass = '/users/change_password'
 
   def index
     @users = User.where(:career => current_user.career).page(params[:page])
@@ -37,34 +38,60 @@ class UsersController < ApplicationController
 
   def update_password
     @user = current_user
-    if(current_user.valid_password?(params[:user][:current_password]))
-      if(params[:user][:password]==params[:user][:password_confirmation])
-        if(params[:user][:password].blank?)
-          redirect_to '/users/change_password', alert: 'Las contraseñas no pueden estar en blanco.'
-        else
-          if (params[:user][:password] == params[:user][:current_password])
-            redirect_to '/users/change_password', alert: 'No se puede usar la misma contraseña.'
-          else
-            current_user.password=params[:user][:password]
-            if current_user.save
-              flash[:alert]="Se cambio la contraseña correctamente."
-              sign_in @user, :bypass => true
-              redirect_to root_path
-            else
-              redirect_to '/users/change_password', alert: 'La contraseña debe tener al menos 6 caracteres.'
-            end
-          end   
-        end
-      else
-        flash[:alert]="Las contraseñas no coinciden."
-        redirect_back fallback_location: '/users/change_password'
-      end
-    else
-      redirect_to '/users/change_password', alert: 'Debe ingresar su contraseña.'
-    end
+    validate_password
   end
 
   private
+
+
+  def validate_password
+    if (new_pass_is_valid)
+      if (is_password_equal_to_confirmation)
+        if (new_password_is_not_empty)
+          redirect_to $path_to_change_pass, alert: 'Las contraseñas no pueden estar en blanco.'
+        else
+          if (new_password_is_equal_to_old)
+            redirect_to $path_to_change_pass, alert: 'No se puede usar la misma contraseña.'
+          else
+            current_user.password = params[:user][:password]
+            check_if_password_has_been_saved
+          end
+        end
+      else
+        flash[:alert] = "Las contraseñas no coinciden."
+        redirect_back fallback_location: $path_to_change_pass
+      end
+    else
+      redirect_to $path_to_change_pass, alert: 'Debe ingresar su contraseña.'
+    end
+  end
+
+  def new_password_is_not_empty
+    params[:user][:password].blank?
+  end
+
+  def new_pass_is_valid
+    current_user.valid_password?(params[:user][:current_password])
+  end
+
+  def new_password_is_equal_to_old
+    params[:user][:password] == params[:user][:current_password]
+  end
+
+  def check_if_password_has_been_saved
+    if current_user.save
+      flash[:alert] = "Se cambio la contraseña correctamente."
+      sign_in @user, :bypass => true
+      redirect_to root_path
+    else
+      redirect_to $path_to_change_pass, alert: 'La contraseña debe tener al menos 6 caracteres.'
+    end
+  end
+
+  def is_password_equal_to_confirmation
+    params[:user][:password] == params[:user][:password_confirmation]
+  end
+
   def authorize_admin
     return unless !current_user.director? && !current_user.present?
     redirect_to root_path, alert: 'Solo Directores!'
