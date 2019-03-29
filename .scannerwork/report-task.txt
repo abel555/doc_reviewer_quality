@@ -2,5 +2,5 @@ projectKey=docReviewerIngeCalidad
 serverUrl=http://localhost:9000
 serverVersion=7.6.0.21501
 dashboardUrl=http://localhost:9000/dashboard?id=docReviewerIngeCalidad
-ceTaskId=AWnLLxeAWHfhAW8TOPVQ
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWnLLxeAWHfhAW8TOPVQ
+ceTaskId=AWnLXNmgWHfhAW8TOPVS
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWnLXNmgWHfhAW8TOPVS
