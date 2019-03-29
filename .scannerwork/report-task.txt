@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 projectKey=doc-reviewer-ror
 serverUrl=http://localhost:9000
 serverVersion=7.7.0.23042
 dashboardUrl=http://localhost:9000/dashboard?id=doc-reviewer-ror
 ceTaskId=AWnD_CLP3qdwlwKLqk7l
 ceTaskUrl=http://localhost:9000/api/ce/task?id=AWnD_CLP3qdwlwKLqk7l
+=======
+projectKey=docReviewerIngeCalidad
+serverUrl=http://localhost:9000
+serverVersion=7.6.0.21501
+dashboardUrl=http://localhost:9000/dashboard?id=docReviewerIngeCalidad
+ceTaskId=AWnLLxeAWHfhAW8TOPVQ
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWnLLxeAWHfhAW8TOPVQ
+>>>>>>> 170bcd8f8333f1cb6e6bb7809e7394b49903a227
