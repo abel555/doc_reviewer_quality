@@ -30,6 +30,9 @@ gem 'kaminari'
 gem 'pg'
 gem 'unicorn'
 
+gem 'rspec-activemodel-mocks'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
@@ -88,8 +91,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #SIMPLECOV GEM
   gem 'simplecov', require: false, group: :test
 
+#MOCK GEM
+
+%w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+  gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end
+
 # Or, run against the master branch
-# (requires master-branch versions of all related RSpec libraries)
+#(requires master-branch versions of all related RSpec libraries)
 group :development, :test do
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
     gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'

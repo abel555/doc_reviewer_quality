@@ -1,6 +1,10 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
+SimpleCov.at_exit do
+  puts Coverage.result.keys
+end
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
