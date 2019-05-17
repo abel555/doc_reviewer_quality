@@ -10,8 +10,8 @@ default: &default
   pool: 5
   host: localhost
   database: doc_reviewer_db
-  username: registrosMedicos
-  password: 123
+  username: harold
+  password: 123123
 
 development:
   <<: *default
