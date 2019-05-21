@@ -10,8 +10,8 @@ default: &default
   pool: 5
   host: localhost
   database: doc_reviewer_db
-  username: harold
-  password: 123123
+  username: abel
+  password: 73441710bliokiN
 
 development:
   <<: *default
