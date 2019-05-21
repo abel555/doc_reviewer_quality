@@ -49,5 +49,7 @@ describe Question do
                                       { point: 2, description: 'Bad'} ] } )
             expect(survey.questions.first).to be_truthy
         end
+
+        
     end
 end
