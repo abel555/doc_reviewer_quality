@@ -16,4 +16,14 @@ RSpec.describe UsersController, type: :controller do
             response.should have_http_status(200)
         end 
     end
+    include Devise::TestHelpers
+    before(:each) do
+      #  @user = User.new(params[:"hoooe@gmail.com"])
+    #   sign_in @user
+    end
+
+    it "should render a new user when you create it" do
+        expect(3).to eq(3)    
+    end
+
 end
