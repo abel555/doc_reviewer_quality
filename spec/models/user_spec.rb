@@ -50,6 +50,12 @@ RSpec.describe User, type: :model do
   end
 
 
+  it "if admin has abilities" do
+    
+  end
+
+
+
   # Failure/Error: expect(User.new).to be_valid
   # expected #<User id: nil, email: "", created_at: nil, updated_at: nil, name: nil, 
   # lastname: nil, ci: nil, phone: nil, career: nil, role: "estudiante", username: nil, admin_role: 
