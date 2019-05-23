@@ -27,14 +27,24 @@ RSpec.describe User, type: :model do
 
   it "is invalid when the mail and username are already registered" do
   new_user = User.create(username: "TEST", email: 'sandoval@ucb.edu.bo', password: "123123")
+  new_user.login
   repeated_user = User.create(username: "TEST", email: 'sandoval@ucb.edu.bo', password: "123123")
   repeated_user.valid?
   expect(repeated_user.errors.messages[:email]).to eq ['translation missing: es.activerecord.errors.models.user.attributes.email.taken']
   expect(repeated_user).to_not be_valid
   end
 
+  it "is invalid when the mail and username are already registered as an username from another user" do
+    new_user = User.create(username: "TEST", email: 'sandoval@ucb.edu.bo', password: "123123")
+    new_user.login
+    repeated_user = User.create(username: "sandoval@ucb.edu.bo", email: 'real@ucb.edu.bo', password: "123123")
+    repeated_user.valid?
+    expect(repeated_user).to_not be_valid
+    end
+
   it "has a default role 'estudiante' when created" do
     new_user = User.new()
+    new_user.complete_name()
     expect(new_user.role).to eq "estudiante"
   end
 
@@ -50,10 +60,15 @@ RSpec.describe User, type: :model do
   end
 
 
-  it "if admin has abilities" do
-    
-  end
 
+  it 'is database authenticable' do
+    user = User.create(
+       email: 'test@example.com', 
+      password: 'password123',
+      password_confirmation: 'password123'
+    )
+    expect(user.valid_password?('password123')).to be_truthy
+  end
 
 
   # Failure/Error: expect(User.new).to be_valid

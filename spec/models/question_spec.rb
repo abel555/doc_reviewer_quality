@@ -3,13 +3,28 @@ require 'rails_helper'
 describe Question do
     fixtures :questions
 
+
     before(:example) do
         @select_option = questions(:select_option_one)
     end
 
+
     it 'always has a type' do
         @select_option.type = nil
         expect(@select_option.valid?).to be_falsy
+    end
+
+    it 'has a default type' do
+        question_test = Question.new()
+        Question.default_type()
+        question_test.display_type()
+        expect(question_test.valid?).to be_falsy
+    end
+
+    it 'It does not have score when created' do
+        question_test = Question.new()
+        Question.default_type()
+        expect(question_test.is_quantitative?()).to eq nil
     end
 
     it 'always have a title' do
