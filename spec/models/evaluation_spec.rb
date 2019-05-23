@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Evaluation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it 'is neither quantitative or qualitative when created' do
+    eval_test = Evaluation.new()
+    eval_test.is_quantitative?()
+    eval_test.is_qualitative?()
+    expect(eval_test.valid?).to be_falsy
+  end
+  
 end

@@ -55,11 +55,6 @@ RSpec.describe User, type: :model do
     expect(authenticated).to eq nil
   end
 
-  it "has one after adding one" do
-    instance_double("User", :username => "Harold")
-  end
-
-
 
   it 'is database authenticable' do
     user = User.create(
@@ -69,15 +64,5 @@ RSpec.describe User, type: :model do
     )
     expect(user.valid_password?('password123')).to be_truthy
   end
-
-
-  # Failure/Error: expect(User.new).to be_valid
-  # expected #<User id: nil, email: "", created_at: nil, updated_at: nil, name: nil, 
-  # lastname: nil, ci: nil, phone: nil, career: nil, role: "estudiante", username: nil, admin_role: 
-  # false, tutor_role: nil, relator_role: nil, professor_role: nil, professional_degree: nil> 
-  # to be valid, but got errors: Email translation missing: es.activerecord.errors.models.user.attributes.email.invalid, 
-  # Email translation missing: es.activerecord.errors.models.user.attributes.email.blank, 
-  # Contraseña translation missing: es.activerecord.errors.models.user.attributes.password.blank
-
 
 end
